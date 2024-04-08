@@ -351,7 +351,7 @@ def main():
         # Try print some info about the dataset
         logger.info(f"Dataset loaded: {raw_datasets}")
         logger.info(raw_datasets)
-    else:
+    else:   # 加载数据
         # Loading a dataset from your local files.
         # CSV/JSON training and evaluation files are needed.
         data_files = {"train": data_args.train_file, "validation": data_args.validation_file}
@@ -478,6 +478,7 @@ def main():
         if num_labels <= 1:
             raise ValueError("You need more than one label to do classification.")
 
+    # 加载模型
     # Load pretrained model and tokenizer
     # In distributed training, the .from_pretrained methods guarantee that only one local process can concurrently
     # download model & vocab.
@@ -559,7 +560,7 @@ def main():
             ids[label_to_id[label]] = 1.0
         return ids
 
-    def preprocess_function(examples):
+    def preprocess_function(examples):  # 处理数据
         if data_args.text_column_names is not None:
             text_column_names = data_args.text_column_names.split(",")
             # join together text columns into "sentence" column

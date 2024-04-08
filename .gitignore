@@ -1,1 +1,6 @@
 *.bin
+
+bert-base-uncased/
+data/
+evaluate/
+pt_save_pretrained/
